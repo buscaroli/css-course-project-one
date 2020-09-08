@@ -1,0 +1,188 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient(
+        rgba(126, 213, 111, 0.8),
+        rgba(40, 180, 133, 0.8)), 
+        url(../img/hero.jpg);
+    background-size: cover;
+    background-position-y: top;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100% );
+    position: relative; 
+}
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.text-box {
+    position: absolute;
+    top: 40%;   /* related to the parent element (header)*/
+    left: 50%;  /* related to the parent element (header)*/
+    transform: translate(-50%, -50%); /* related to the element itself!! */
+    text-align: center; /* the button has been defined as inline-block
+                            which means it is treated as text */
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    backface-visibility: hidden; /* to prevent an animation glitch */
+    margin-bottom: 60px;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    80% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);;
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block; /* to prevent the button from overriding other
+                                elements. Also, being inline-block, it is 
+                                treated as a text element and we can apply 
+                                the property text: center to its parent. */
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative; /* to use the btn properties of top and left*/
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+    background-color: white;
+    color: #777;
+}
+
+.btn::after {
+    /* It's mandatory to add a content and display property 
+        when using pseudo-classes!! . Creating a second element
+        that looks like the button and moving it behind it, so we
+        can play with different transformations.*/
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+.btn-white::after {
+    background-color: white;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.3) scaleY(1.5);
+    opacity: 0;
+  
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .5s;
+    animation-fill-mode: backwards; /* applies the properties of the first
+        keyframe before the animation starts, in this case opacity to 0
+        and translateY 20px. */
+    
+}
