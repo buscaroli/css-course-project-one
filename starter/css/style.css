@@ -7,19 +7,27 @@ Dark green: #28b485
 
 */
 
-* {
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit; /* will be inherited so entering it in the body */
+}
+
+html {
+    font-size: 62.5%; /* When setting the base font-size, do not use pixels as
+                         they may interfere with the user's preferences, always
+                         try to use a %: 62.5% is equivalent to 10px */
 }
 
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
+    box-sizing: border-box; /* will be inherited, see under the '*' */
 }
 
 .header {
@@ -34,17 +42,17 @@ body {
     position: relative; 
 }
 
-.logo-box {
+.header__logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
-.logo {
-    height: 35px;
+.header__logo {
+    height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
     position: absolute;
     top: 40%;   /* related to the parent element (header)*/
     left: 50%;  /* related to the parent element (header)*/
@@ -57,24 +65,24 @@ body {
     color: #fff;
     text-transform: uppercase;
     backface-visibility: hidden; /* to prevent an animation glitch */
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
     animation-name: moveInLeft;
     animation-duration: 1s;
     
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
     animation-name: moveInRight;
     animation-duration: 1s;
 }
@@ -82,11 +90,11 @@ body {
 @keyframes moveInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80% {
-        transform: translateX(10px);
+        transform: translateX(1rem);
     }
 
     100% {
@@ -98,11 +106,11 @@ body {
 @keyframes moveInRight {
     0% {
         opacity: 0;
-        transform: translateX(50px);
+        transform: translateX(5rem);
     }
 
     80% {
-        transform: translateX(-5px);
+        transform: translateX(-0.5rem);
     }
 
     100% {
@@ -114,7 +122,7 @@ body {
 @keyframes moveInBottom {
     0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(2rem);
     }
 
     100% {
@@ -125,29 +133,30 @@ body {
 
 .btn:link,
 .btn:visited {
+    font-size: 1.6rem;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block; /* to prevent the button from overriding other
                                 elements. Also, being inline-block, it is 
                                 treated as a text element and we can apply 
                                 the property text: center to its parent. */
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all .2s;
     position: relative; /* to use the btn properties of top and left*/
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 .btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-0.1rem);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
+.btn--white {
     background-color: white;
     color: #777;
 }
@@ -161,7 +170,7 @@ body {
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -169,7 +178,7 @@ body {
     transition: all 0.4s;
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: white;
 }
 
@@ -179,7 +188,7 @@ body {
   
 }
 
-.btn-animated {
+.btn--animated {
     animation: moveInBottom .5s ease-out .5s;
     animation-fill-mode: backwards; /* applies the properties of the first
         keyframe before the animation starts, in this case opacity to 0
