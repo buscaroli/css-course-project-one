@@ -2,7 +2,7 @@
 .btn {
     &:link,
     &:visited {
-        font-size: 1.6rem;
+        font-size: $default-font-size;
         text-transform: uppercase;
         text-decoration: none;
         padding: 1.5rem 4rem;
@@ -41,6 +41,15 @@
         }
     }
 
+    &--green {
+        background-color: $color-primary;
+        color:$color-white;
+
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+
     &::after {
         /* It's mandatory to add a content and display property 
             when using pseudo-classes!! . Creating a second element
@@ -64,5 +73,31 @@
             keyframe before the animation starts, in this case opacity to 0
             and translateY 20px. */
         
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        font-weight: 700;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: .1rem solid $color-primary;
+        padding: .3rem;
+        transition: all .2s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-.2rem);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+        transform: translateY(0);
     }
 }

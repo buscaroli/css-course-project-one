@@ -1,0 +1,30 @@
+.section-about {
+    background-color: $color-grey-light;
+    padding: 25rem 0;
+    margin-top: -20vh; // 95vh - 75vh, see under layout->heades.scss
+}
+
+.section-features {
+    padding: 20rem 0;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+    url(../../img/nat-4.jpg);
+
+    // Alternative way to clip-path used in the _header.scss for skewing the
+    // section, but might give problems when changing the width of the page.
+    transform: skewY(-7deg);
+    margin-top: -10rem;
+
+    & > * {
+    // Selects all direct children (.row) in order to revert the skew
+        transform: skewY(7deg);
+    }
+}
+
+.section-tours {
+    background-color: $color-grey-light;
+    padding: 25rem 0 15rem 0;
+    margin-top: -20vh;
+}

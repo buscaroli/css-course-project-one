@@ -1,0 +1,43 @@
+.composition {
+    position: relative; // so we can use absolute down below
+
+    &__photo {
+        width: 55%; // responsive web design: images in '%' where possible
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .5);
+        border-radius: .2rem;
+        position: absolute; // will be positioned relative to their parent
+        z-index: 10;
+        transition: all .2s;
+        // outline-offset: .6rem;;
+
+        &--p1 {
+            top: -2rem;
+            left: 0;
+        }
+
+        &--p2 {
+            top: 2rem;
+            right: 0;
+        }
+
+        &--p3 {
+            top: 10rem;
+            left: 20%;
+        }
+
+        &:hover {
+            transform: scale(1.1) translateY(-1rem);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .4);
+            z-index: 20;
+            border: .2rem solid $color-white;
+            // outline: .6rem solid $color-primary;
+        }
+    }
+
+    &:hover &__photo:not(:hover) {
+    // composition:hover composition__photo:not(hover)
+        transform: scale(.9);
+         
+    }
+
+}
