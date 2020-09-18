@@ -1,0 +1,68 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: rgba($color-white, .6);
+    border-radius: .3rem;
+    padding: 6rem;
+    padding-left: 9rem; // 6 + 3 to account for the translateX(-3rem)
+    font-size: $default-font-size;
+    transform: skewX(-12deg); // NB I can't create a & > * {} block to unskew
+        // the children as one of them already has a transform properties, only
+        // one can be applied at a time.
+    position: relative; // to allow the positioning of story__caption
+    
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%); // Gives the shape to the element
+
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%); // Allows the text to float
+            // around the element as if it had this shape.
+            // In order to work, the element needs to have defined dimensions
+            // (eg width and height) and to be floated.
+        
+        transform: translateX(-3rem) skew(12deg);
+    }
+
+    &__img {
+        // always give floating images a dimension!!
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4);
+        transition: all .5s;
+    }
+
+    &__text {
+        transform: skewX(12deg);
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0; // before animating the text
+        transition: all .5s;
+        backface-visibility: hidden; // to fix glitch
+    }
+
+    
+    &:hover &__img {
+        transform: scale(1) translateX(-4rem);
+        filter: blur(.2rem) brightness(80%);
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%); 
+    }
+}
