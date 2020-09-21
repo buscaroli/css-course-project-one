@@ -1,5 +1,7 @@
 
 .btn {
+    &, // <- to make it work also with the <button> elements as they
+       // don't have a :link or :visited property
     &:link,
     &:visited {
         font-size: $default-font-size;
@@ -13,6 +15,11 @@
         border-radius: 10rem;
         transition: all .2s;
         position: relative; /* to use the btn properties of top and left*/
+
+        // EXTRA for the <button> elements, previously we dealt only with
+        // buttons made with the <a> element.
+        border: none;
+        cursor: pointer;
     }
 
         
@@ -27,7 +34,9 @@
         }
     }
 
-    &:active {
+    &:active,
+    &:hover:focus {
+        outline: none;
         transform: translateY(-0.1rem);
         box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);
     }
