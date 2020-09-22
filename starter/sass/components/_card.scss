@@ -155,7 +155,7 @@
         transform: translate(-50%, -50%);
         width: 90%; // to prevent the text from splitting in two lines.
                     // It will stil split if the screen is very narrow.
-        // text-align: center; not actually necessary
+        text-align: center; // not actually necessary
     }
 
     &__price-box {
