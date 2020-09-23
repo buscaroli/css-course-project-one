@@ -9,13 +9,18 @@
         height: 7rem;
         width: 7rem;
         position: fixed;
-        top: 6rem;
+        top: 4.5rem;
         right: 6rem;
         border-radius: 50%;
         z-index: 200;
         box-shadow: 0 1rem 3rem rgba($color-black, .1);
         text-align: center;
         cursor: pointer;
+
+        @include respond(tab-port) {
+            top: 2rem;
+            right: 3rem;
+        }
 
     }
 
@@ -24,12 +29,17 @@
         width: 6rem;
         border-radius: 50%;
         position: fixed;
-        top: 6.5rem;
+        top: 4.5rem;
         right: 6.5rem;
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 100;
 
         transition: transform .8s cubic-bezier(0.83, 0, 0.17, 1);
+
+        @include respond(tab-port) {
+            top: 2rem;
+            right: 3rem;
+        }
     }
 
     &__nav {

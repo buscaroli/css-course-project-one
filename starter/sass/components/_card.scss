@@ -173,4 +173,57 @@
         font-size: 6rem;
         font-weight: 100;
     }
+
+    // MEDIA QUERIES
+    // This Media Query is going to completely change the way the card
+    // component looks like, so we are gonna create a a media-query containing
+    // a complete new component (copied/pasted code above and rearranged or
+    // deleted stuff as required). 
+
+    @include respond(tab-port) {
+        // FUNCTIONALITY
+        height: auto;  
+        border-radius: .3rem;
+        background-color: $color-white;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+        &__side {
+        
+            height: auto;
+            position: relative;
+            box-shadow: none;
+
+            &--back {
+                transform: rotateY(0deg);
+                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);    
+            }
+        }
+
+        &:hover &__side--front {
+            transform: rotateY(0deg);
+        }
+
+        &__details {
+            padding: 1rem 3rem;
+        }
+
+        // BACK SIDE STYLING
+        &__cta {
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: translate(0);
+            width: 100%;
+
+            padding: 7rem 4rem 4rem 4rem;
+        }
+
+        &__price-box {            
+            margin-bottom: 8rem;
+        }
+
+        &__price-value {
+            font-size: 4rem;
+        }
+    }
 }

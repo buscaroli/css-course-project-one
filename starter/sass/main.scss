@@ -22,23 +22,3 @@
 @import "layout/navigation";
 
 @import "pages/home";
-
-
-*,
-*::after,
-*::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit; /* will be inherited so entering it in the body */
-}
-
-html {
-    font-size: 62.5%; /* When setting the base font-size, do not use pixels as
-                         they may interfere with the user's preferences, always
-                         try to use a %: 62.5% is equivalent to 10px */
-}
-
-// Defines what 1rem is
-body {
-    box-sizing: border-box; /* will be inherited, see under the '*' */
-}

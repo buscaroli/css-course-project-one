@@ -1,0 +1,46 @@
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /* will be inherited so entering it in the body */
+}
+
+html {                // Defines what 1rem is
+    font-size: 62.5%; /* When setting the base font-size, do not use pixels as
+                         they may interfere with the user's preferences, always
+                         try to use a %: 62.5% is equivalent to 10px */
+                         // 1rem = 10px as:      10/16*100 = 62.5%
+                         // 
+
+
+    @include respond(wide) { //I want 1rem = 12px so: 12/16*100 = 75%
+        font-size: 75%;
+    }   
+
+    @include respond(tab-land) {//I want 1rem = 9px so: 9/16*100 = 56.25%
+        font-size: 56.25%;
+    }
+
+    @include respond(tab-port) {//I want 1rem = 8px so: 8/16*100 = 50%
+        font-size: 50%;
+    } 
+
+    // @include respond(phone) {//I want 1rem = 8px so: 7/16*100 = 50%
+    //     font-size: 43.75%;
+    // } 
+
+    
+        
+}
+
+body {
+    box-sizing: border-box; /* will be inherited, see under the '*' */
+    padding: 3rem; 
+    
+    @include respond(tab-port) { // Remove the white border 
+        padding: 0;
+    } 
+
+}
